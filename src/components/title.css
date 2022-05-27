@@ -1,0 +1,23 @@
+.Title{
+    background-color: #1976d2;
+    height: 100vh;
+    padding-top: 0;
+    text-align: center !important;
+}
+
+.text {
+    -ms-transform: translateY(35vh);
+    transform: translateY(35vh);
+}
+
+.text h1 {
+    font-size: 3rem;
+}
+
+.text h3 {
+    font-size: 1.8rem;
+=======
+    -ms-transform: translateY(45vh);
+    transform: translateY(45vh);
+>>>>>>> origin/master
+}
