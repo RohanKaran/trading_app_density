@@ -92,7 +92,7 @@ function Trading() {
       <div className={"left_body"}>
         <div>
           <h3>
-            Current price = {stream ? parseFloat(stream["k"]["c"]) : "null"}
+            Current price: {stream ? parseFloat(stream["k"]["c"]) : "null"}
           </h3>
           <h3>
             Current Time: <Clock format={'HH:mm:ss'} ticking/>
