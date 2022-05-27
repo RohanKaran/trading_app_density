@@ -91,10 +91,10 @@ function Trading() {
 
       <div className={"left_body"}>
         <div>
-          <h3>
+          <h3 style={{marginBottom:1}}>
             Current price: {stream ? parseFloat(stream["k"]["c"]) : "null"}
           </h3>
-          <h3>
+          <h3 style={{marginTop:0}}>
             Current Time: <Clock format={'HH:mm:ss'} ticking/>
           </h3>
           <div align={"left"}>
@@ -105,20 +105,29 @@ function Trading() {
 
         </div>
 
-      <FormControl>
-        <FormLabel id="demo-row-radio-buttons-group-label"><h3 style={{marginBottom:0}}>Prediction</h3></FormLabel>
-        <RadioGroup
-          row
-          aria-labelledby="demo-row-radio-buttons-group-label"
-          name="row-radio-buttons-group"
-          onChange={(e)=> {
-            setBet(parseInt(e.target.value))
-            console.log(e.target.value)
-          }}
-        >
-          <FormControlLabel value={1} control={<Radio />} label="Up" className={"up"}/>
-          <FormControlLabel value={0} control={<Radio />} label="Down" className={"down"}/>
-        </RadioGroup>
+      <FormControl style={{alignItems:"center"}}>
+        <FormLabel>
+          <div>
+            <h3 style={{margin:0}}>
+              Prediction
+            </h3>
+            (Bet available for {getTargetTime()+"00 - "+ getTargetTime() + "59"})
+          </div>
+
+
+        </FormLabel>
+          <RadioGroup
+            row
+            aria-labelledby="demo-row-radio-buttons-group-label"
+            name="row-radio-buttons-group"
+            onChange={(e)=> {
+              setBet(parseInt(e.target.value))
+              console.log(e.target.value)
+            }}
+          >
+            <FormControlLabel value={1} control={<Radio />} label="Up" className={"up"}/>
+            <FormControlLabel value={0} control={<Radio />} label="Down" className={"down"}/>
+          </RadioGroup>
       </FormControl>
     <br/>
     <br/>
