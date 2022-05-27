@@ -7,3 +7,11 @@
     -ms-transform: translateY(40vh);
     transform: translateY(40vh);
 }
+
+.css-1a5icme.Mui-checked {
+    color: red !important;
+}
+
+.up .css-vqmohf-MuiButtonBase-root-MuiRadio-root.Mui-checked {
+    color: green;
+}

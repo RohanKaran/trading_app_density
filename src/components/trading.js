@@ -1,4 +1,4 @@
-import {useEffect, useState} from "react";
+import {useState} from "react";
 import Table from '@mui/material/Table';
 import TableBody from '@mui/material/TableBody';
 import TableCell from '@mui/material/TableCell';
@@ -34,10 +34,8 @@ function Trading() {
   // const [prev_stream, setPrev_stream] = useState(null)
   const [stream, setStream] = useState(null)
   const [table] = useState([])
-  const [current_time, setCurrent_TIme] = useState(getTime())
   const [bet, setBet] = useState(true)
   const [current_bet] = useState([])
-  useEffect(() => setCurrent_TIme(getTime()))
   ws.onmessage = function (event) {
     const tmp = JSON.parse(event.data)
     let tmp_score = 0
@@ -95,7 +93,7 @@ function Trading() {
           Current price = {stream ? parseFloat(stream["k"]["c"]) : "null"}
         </h3>
         <h3>
-          Current Time: <Clock format={'hh:mm:ss'} ticking/>
+          Current Time: <Clock format={'HH:mm:ss'} ticking/>
         </h3>
         <div align={"left"}>
           <h2>
@@ -116,8 +114,8 @@ function Trading() {
             console.log(e.target.value)
           }}
         >
-          <FormControlLabel value={1} control={<Radio />} label="Up" />
-          <FormControlLabel value={0} control={<Radio />} label="Down" />
+          <FormControlLabel value={1} control={<Radio />} label="Up" className={"up"}/>
+          <FormControlLabel value={0} control={<Radio />} label="Down" className={"down"}/>
         </RadioGroup>
       </FormControl>
     <br/>
