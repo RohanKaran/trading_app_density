@@ -6,7 +6,16 @@ import TableContainer from '@mui/material/TableContainer';
 import TableHead from '@mui/material/TableHead';
 import TableRow from '@mui/material/TableRow';
 import Paper from '@mui/material/Paper';
-import {Button, CircularProgress, FormControl, FormControlLabel, FormLabel, Radio, RadioGroup} from "@mui/material";
+import {
+  Button,
+  CircularProgress,
+  FormControl,
+  FormControlLabel,
+  FormLabel,
+  Radio,
+  RadioGroup
+} from "@mui/material";
+import './trading.css'
 
 const getTargetTime = () => {
   const today = new Date();
@@ -23,10 +32,11 @@ function Trading() {
   const ws = new WebSocket('wss://stream.binance.com/ws/btcusdt@kline_1m')
   // const [prev_stream, setPrev_stream] = useState(null)
   const [stream, setStream] = useState(null)
-  const [table, setTable] = useState([])
+  const [table] = useState([])
+  const [current_time, setCurrent_TIme] = useState(getTime())
   const [bet, setBet] = useState(true)
-  const [current_bet, setCurrentbet] = useState([])
-  // useEffect(() => console.log(table))
+  const [current_bet] = useState([])
+  useEffect(() => setCurrent_TIme(getTime()))
   ws.onmessage = function (event) {
     const tmp = JSON.parse(event.data)
     let tmp_score = 0
@@ -80,11 +90,14 @@ function Trading() {
         Trading Game
       </h1>
       <div style={{paddingBottom:'5rem'}}>
-        <h2 style={{float: 'left'}}>
+        <h2>
           Current price = {stream ? parseFloat(stream["k"]["c"]) : "null"}
         </h2>
-        <h2 style={{float: 'right'}}>
+        <h2 style={{float: 'left'}}>
           User Payout Counter: {score}
+        </h2>
+        <h2 style={{float: 'left'}}>
+          Current Time: {current_time}
         </h2>
       </div>
 
@@ -150,7 +163,12 @@ function Trading() {
           </TableBody>
         </Table>
       </TableContainer>
-    </div>: <CircularProgress/>}</>
+    </div>:
+      <div className={"progress"}>
+        <CircularProgress/>
+      </div>
+
+    }</>
   );
 }
 
