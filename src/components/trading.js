@@ -90,23 +90,23 @@ function Trading() {
       <h1>
         Trading Game
       </h1>
-      <div style={{paddingBottom:'5rem'}}>
-        <h2>
+      <div>
+        <h3>
           Current price = {stream ? parseFloat(stream["k"]["c"]) : "null"}
-        </h2>
-        <h2 style={{float: 'left'}}>
-          User Payout Counter: {score}
-        </h2>
-        <br/>
-        <h2 style={{float: 'left'}}>
-          Current Time: <Clock format={'hh:mm:ss'} timezone={"IN"}/>
-        </h2>
+        </h3>
+        <h3>
+          Current Time: <Clock format={'hh:mm:ss'} ticking/>
+        </h3>
+        <div align={"left"}>
+          <h2>
+            User Payout Counter: {score}
+          </h2>
+        </div>
+
       </div>
 
-
-
       <FormControl>
-        <FormLabel id="demo-row-radio-buttons-group-label">Prediction</FormLabel>
+        <FormLabel id="demo-row-radio-buttons-group-label"><h3 style={{marginBottom:0}}>Prediction</h3></FormLabel>
         <RadioGroup
           row
           aria-labelledby="demo-row-radio-buttons-group-label"
@@ -121,10 +121,13 @@ function Trading() {
         </RadioGroup>
       </FormControl>
     <br/>
-
+    <br/>
       <Button
         disabled={(current_bet.length > 0) || (bet === true)}
-        onClick={handleSubmit}>
+        onClick={handleSubmit}
+        variant={"contained"}
+        style={{marginBottom:"3rem"}}
+      >
         Place bet
       </Button>
 
