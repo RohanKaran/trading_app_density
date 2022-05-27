@@ -6,7 +6,7 @@ import TableContainer from '@mui/material/TableContainer';
 import TableHead from '@mui/material/TableHead';
 import TableRow from '@mui/material/TableRow';
 import Paper from '@mui/material/Paper';
-import {Button, FormControl, FormControlLabel, FormLabel, Radio, RadioGroup} from "@mui/material";
+import {Button, CircularProgress, FormControl, FormControlLabel, FormLabel, Radio, RadioGroup} from "@mui/material";
 
 const getTargetTime = () => {
   const today = new Date();
@@ -31,7 +31,7 @@ function Trading() {
     const tmp = JSON.parse(event.data)
     let tmp_score = 0
     if (current_bet.length > 0 && current_bet[0]["closing_price"] === null && current_bet[0]["ot"] + 120000 === tmp["k"]["t"]){
-      console.log(parseFloat(tmp["k"]["c"]) > current_bet[0]["opening_price"], parseFloat(tmp["k"]["c"]) < current_bet[0]["opening_price"])
+      // console.log(parseFloat(tmp["k"]["c"]) > current_bet[0]["opening_price"], parseFloat(tmp["k"]["c"]) < current_bet[0]["opening_price"])
       if ((current_bet[0]["bet"] === 1 && parseFloat(tmp["k"]["c"]) > current_bet[0]["opening_price"]) || (current_bet[0]["bet"] === 0 && parseFloat(tmp["k"]["c"]) < current_bet[0]["opening_price"])){
         table[table.length - 1]["closing_price"] = tmp["k"]["c"]
         table[table.length - 1]["score"] += 1
@@ -75,7 +75,7 @@ function Trading() {
   }
 
   return (
-    <div className="Trading">
+    <>{stream ? <div className="Trading">
       <h1>
         Trading Game
       </h1>
@@ -150,7 +150,7 @@ function Trading() {
           </TableBody>
         </Table>
       </TableContainer>
-    </div>
+    </div>: <CircularProgress/>}</>
   );
 }
 
