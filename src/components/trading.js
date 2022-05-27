@@ -6,6 +6,7 @@ import TableContainer from '@mui/material/TableContainer';
 import TableHead from '@mui/material/TableHead';
 import TableRow from '@mui/material/TableRow';
 import Paper from '@mui/material/Paper';
+import Clock from 'react-live-clock';
 import {
   Button,
   CircularProgress,
@@ -96,8 +97,9 @@ function Trading() {
         <h2 style={{float: 'left'}}>
           User Payout Counter: {score}
         </h2>
+        <br/>
         <h2 style={{float: 'left'}}>
-          Current Time: {current_time}
+          Current Time: <Clock format={'hh:mm:ss'} timezone={"IN"}/>
         </h2>
       </div>
 
