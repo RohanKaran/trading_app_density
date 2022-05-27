@@ -16,8 +16,6 @@
 
 .text h3 {
     font-size: 1.8rem;
-=======
     -ms-transform: translateY(45vh);
     transform: translateY(45vh);
->>>>>>> origin/master
 }
