@@ -1,0 +1,11 @@
+.Title{
+    background-color: #1976d2;
+    height: 100vh;
+    padding-top: 0;
+    text-align: center !important;
+}
+
+.text {
+    -ms-transform: translateY(45vh);
+    transform: translateY(45vh);
+}
