@@ -51,6 +51,28 @@ function Trading() {
     // console.log(`[message] Data received from server: ${stream}`);
 
   };
+
+  const handleSubmit = () => {
+    if (current_bet.length > 0){
+      return
+    }
+    current_bet.push(
+          {
+            "current_time": getTime(),
+            "opening_time": getTargetTime() + "00",
+            "ot": stream["k"]["t"],
+            "closing_time": getTargetTime() + "59",
+            "opening_price": stream["k"]["o"],
+            "closing_price": null,
+            "bet": bet,
+            "score": 0
+          }
+        )
+    table.push(
+      current_bet[0]
+    )
+  }
+
   return (
     <div className="Trading">
       <h1>
@@ -86,23 +108,7 @@ function Trading() {
 
       <Button
         disabled={(current_bet.length > 0) || (bet === true)}
-        onClick={()=> {
-        current_bet.push(
-          {
-            "current_time": getTime(),
-            "opening_time": getTargetTime() + "00",
-            "ot": stream["k"]["t"],
-            "closing_time": getTargetTime() + "59",
-            "opening_price": stream["k"]["o"],
-            "closing_price": null,
-            "bet": bet,
-            "score": 0
-          }
-        )
-        table.push(
-          current_bet[0]
-        )
-      }}>
+        onClick={handleSubmit}>
         Place bet
       </Button>
 
