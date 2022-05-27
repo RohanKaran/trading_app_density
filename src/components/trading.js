@@ -85,23 +85,25 @@ function Trading() {
 
   return (
     <>{stream ? <div className="Trading">
-      <h1>
-        Trading Game
-      </h1>
-      <div>
-        <h3>
-          Current price = {stream ? parseFloat(stream["k"]["c"]) : "null"}
-        </h3>
-        <h3>
-          Current Time: <Clock format={'HH:mm:ss'} ticking/>
-        </h3>
-        <div align={"left"}>
-          <h2>
-            User Payout Counter: {score}
-          </h2>
-        </div>
-
+      <div className={"heading"}>
+          Trading Game
       </div>
+
+      <div className={"left_body"}>
+        <div>
+          <h3>
+            Current price = {stream ? parseFloat(stream["k"]["c"]) : "null"}
+          </h3>
+          <h3>
+            Current Time: <Clock format={'HH:mm:ss'} ticking/>
+          </h3>
+          <div align={"left"}>
+            <h2>
+              User Payout Counter: {score}
+            </h2>
+          </div>
+
+        </div>
 
       <FormControl>
         <FormLabel id="demo-row-radio-buttons-group-label"><h3 style={{marginBottom:0}}>Prediction</h3></FormLabel>
@@ -166,6 +168,8 @@ function Trading() {
           </TableBody>
         </Table>
       </TableContainer>
+      </div>
+
     </div>:
       <div className={"progress"}>
         <CircularProgress/>

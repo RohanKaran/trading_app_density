@@ -1,4 +1,4 @@
-.Trading {
+.left_body {
     padding-right: 3rem;
     padding-left: 3rem;
 }
@@ -8,10 +8,18 @@
     transform: translateY(40vh);
 }
 
-.css-1a5icme.Mui-checked {
+.down .css-hyxlzm {
     color: red !important;
 }
 
-.up .css-vqmohf-MuiButtonBase-root-MuiRadio-root.Mui-checked {
-    color: green;
+.up .css-hyxlzm {
+    color: green !important;
+}
+
+.heading {
+    font-size: 3rem;
+    box-shadow: rgba(0, 0, 0, 0.35) 0 5px 15px;
+    font-weight: 700;
+    padding-top: 1.5rem;
+    padding-bottom: 1.5rem;
 }
