@@ -171,6 +171,8 @@ function Trading() {
     </div>:
       <div className={"progress"}>
         <CircularProgress/>
+        <br/>
+        Connecting...
       </div>
 
     }</>

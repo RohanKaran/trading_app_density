@@ -4,6 +4,6 @@
 }
 
 .progress {
-    -ms-transform: translateY(45vh);
-    transform: translateY(45vh);
+    -ms-transform: translateY(40vh);
+    transform: translateY(40vh);
 }
