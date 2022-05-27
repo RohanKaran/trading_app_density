@@ -31,7 +31,8 @@ function Trading() {
     const tmp = JSON.parse(event.data)
     let tmp_score = 0
     if (current_bet.length > 0 && current_bet[0]["closing_price"] === null && current_bet[0]["ot"] + 120000 === tmp["k"]["t"]){
-      if ((current_bet[0]["bet"] === 1 && tmp["k"]["c"] > current_bet[0]["opening_price"]) || (current_bet[0]["bet"] === 0 && tmp["k"]["c"] < current_bet[0]["opening_price"])){
+      console.log(parseFloat(tmp["k"]["c"]) > current_bet[0]["opening_price"], parseFloat(tmp["k"]["c"]) < current_bet[0]["opening_price"])
+      if ((current_bet[0]["bet"] === 1 && parseFloat(tmp["k"]["c"]) > current_bet[0]["opening_price"]) || (current_bet[0]["bet"] === 0 && parseFloat(tmp["k"]["c"]) < current_bet[0]["opening_price"])){
         table[table.length - 1]["closing_price"] = tmp["k"]["c"]
         table[table.length - 1]["score"] += 1
 
@@ -62,7 +63,7 @@ function Trading() {
             "opening_time": getTargetTime() + "00",
             "ot": stream["k"]["t"],
             "closing_time": getTargetTime() + "59",
-            "opening_price": stream["k"]["o"],
+            "opening_price": parseFloat(stream["k"]["o"]),
             "closing_price": null,
             "bet": bet,
             "score": 0
@@ -96,7 +97,7 @@ function Trading() {
           aria-labelledby="demo-row-radio-buttons-group-label"
           name="row-radio-buttons-group"
           onChange={(e)=> {
-            setBet(e.target.value)
+            setBet(parseInt(e.target.value))
             console.log(e.target.value)
           }}
         >
@@ -142,7 +143,7 @@ function Trading() {
                 <TableCell align="right">{row.closing_time}</TableCell>
                 <TableCell align="right">{parseFloat(row.opening_price)}</TableCell>
                 <TableCell align="right">{parseFloat(row.closing_price)}</TableCell>
-                <TableCell align="right">{row.bet}</TableCell>
+                <TableCell align="right">{(row.bet === 1) ? "UP" : "DOWN"}</TableCell>
                 <TableCell align="right">{row.score}</TableCell>
               </TableRow>
             ))}
