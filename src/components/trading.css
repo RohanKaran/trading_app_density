@@ -1,9 +1,12 @@
 .Trading {
     padding-right: 3rem;
     padding-left: 3rem;
+<<<<<<< HEAD
 }
 
 .progress {
     -ms-transform: translateY(45vh);
     transform: translateY(45vh);
+=======
+>>>>>>> origin/master
 }
