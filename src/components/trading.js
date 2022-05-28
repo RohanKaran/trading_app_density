@@ -41,17 +41,17 @@ function Trading() {
     let tmp_score = 0
     if (current_bet.length > 0 && current_bet[0]["closing_price"] === null && current_bet[0]["ot"] + 120000 === tmp["k"]["t"]){
       // console.log(parseFloat(tmp["k"]["c"]) > current_bet[0]["opening_price"], parseFloat(tmp["k"]["c"]) < current_bet[0]["opening_price"])
-      if ((current_bet[0]["bet"] === 1 && parseFloat(tmp["k"]["c"]) > current_bet[0]["opening_price"]) || (current_bet[0]["bet"] === 0 && parseFloat(tmp["k"]["c"]) < current_bet[0]["opening_price"])){
-        table[table.length - 1]["closing_price"] = tmp["k"]["c"]
+      if ((current_bet[0]["bet"] === 1 && parseFloat(stream["k"]["c"]) > current_bet[0]["opening_price"]) || (current_bet[0]["bet"] === 0 && parseFloat(stream["k"]["c"]) < current_bet[0]["opening_price"])){
+        table[table.length - 1]["closing_price"] = stream["k"]["c"]
         table[table.length - 1]["score"] += 1
 
       }
       else {
-        table[table.length - 1]["closing_price"] = tmp["k"]["c"]
+        table[table.length - 1]["closing_price"] = stream["k"]["c"]
         table[table.length - 1]["score"] -= 1
       }
       current_bet.pop()
-      console.log("updated", )
+      console.log("updated")
     }
     for (const i in table) {
       tmp_score += table[i]["score"]
